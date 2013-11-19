@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>603E166C-BE30-4A0D-AC84-927A44199E89</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SpeechToText</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3D15D85F-351A-474B-B8EE-E8E06F8B1590</key>
+		<string>https://github.com/iz3/SpeechToText</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iPhone-Speech-To-Text-Library/SpeechToText.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3D15D85F-351A-474B-B8EE-E8E06F8B1590</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/juxiangjun/eme.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3D15D85F-351A-474B-B8EE-E8E06F8B1590</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3D15D85F-351A-474B-B8EE-E8E06F8B1590</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SpeechToText</string>
+		</dict>
+	</array>
+</dict>
+</plist>

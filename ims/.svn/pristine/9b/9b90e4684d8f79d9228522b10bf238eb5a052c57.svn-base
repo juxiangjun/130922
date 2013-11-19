@@ -1,0 +1,7 @@
+dependencies: \
+  /Users/tju/Workspaces/eme/ims/src/client/ios/SpeechToText/iPhone-Speech-To-Text-Library/speex/libspeex/filterbank.c \
+  speex/libspeex/filterbank.h speex/libspeex/arch.h \
+  /Users/tju/Workspaces/eme/ims/src/client/ios/SpeechToText/iPhone-Speech-To-Text-Library/speex/config.h \
+  /Users/tju/Workspaces/eme/ims/src/client/ios/SpeechToText/iPhone-Speech-To-Text-Library/speex/include/speex/speex_types.h \
+  speex/libspeex/fixed_generic.h speex/libspeex/math_approx.h \
+  speex/libspeex/os_support.h

@@ -1,0 +1,1 @@
+package com.eme.ims.server;import com.eme.ims.codec.Message;public enum DBManager {		INSTANCE;		public void saveMessage(Message message) {			}}

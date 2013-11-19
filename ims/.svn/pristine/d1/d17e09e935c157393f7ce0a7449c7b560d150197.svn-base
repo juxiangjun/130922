@@ -1,0 +1,1 @@
+server.host=127.0.0.1server.port=1974server.maxCapacity=10000server.writeTimeout=30server.bothIdleTime=600audio.folder=/data/from=be87a6fa-892c-4952-be93-d32e202525eato=2f1b78c6-0fc3-46c8-8e71-8cefc8f866df

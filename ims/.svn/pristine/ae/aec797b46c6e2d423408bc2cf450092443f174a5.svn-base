@@ -1,0 +1,4 @@
+dependencies: \
+  /Users/tju/Workspaces/eme/ims/src/client/ios/SpeechToText/iPhone-Speech-To-Text-Library/speex/ogg/framing.c \
+  /Users/tju/Workspaces/eme/ims/src/client/ios/SpeechToText/iPhone-Speech-To-Text-Library/speex/ogg/ogg.h \
+  /Users/tju/Workspaces/eme/ims/src/client/ios/SpeechToText/iPhone-Speech-To-Text-Library/speex/ogg/os_types.h

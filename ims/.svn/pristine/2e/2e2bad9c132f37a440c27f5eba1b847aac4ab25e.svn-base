@@ -1,0 +1,11 @@
+dependencies: \
+  /Users/tju/Workspaces/eme/ims/src/client/ios/SpeechToText/iPhone-Speech-To-Text-Library/speex/src/speexdec.c \
+  speex/src/getopt_win.h \
+  /Users/tju/Workspaces/eme/ims/src/client/ios/SpeechToText/iPhone-Speech-To-Text-Library/speex/include/speex/speex.h \
+  speex/include/speex/speex_bits.h speex/include/speex/speex_types.h \
+  /Users/tju/Workspaces/eme/ims/src/client/ios/SpeechToText/iPhone-Speech-To-Text-Library/speex/ogg/ogg.h \
+  /Users/tju/Workspaces/eme/ims/src/client/ios/SpeechToText/iPhone-Speech-To-Text-Library/speex/ogg/os_types.h \
+  speex/src/wav_io.h \
+  /Users/tju/Workspaces/eme/ims/src/client/ios/SpeechToText/iPhone-Speech-To-Text-Library/speex/include/speex/speex_header.h \
+  /Users/tju/Workspaces/eme/ims/src/client/ios/SpeechToText/iPhone-Speech-To-Text-Library/speex/include/speex/speex_stereo.h \
+  /Users/tju/Workspaces/eme/ims/src/client/ios/SpeechToText/iPhone-Speech-To-Text-Library/speex/include/speex/speex_callbacks.h

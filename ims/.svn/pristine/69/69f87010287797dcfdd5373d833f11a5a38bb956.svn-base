@@ -1,0 +1,3 @@
+dependencies: \
+  /Users/tju/Workspaces/eme/ims/src/client/ios/SpeechToText/iPhone-Speech-To-Text-Library/speex/src/getopt.c \
+  speex/src/getopt_win.h

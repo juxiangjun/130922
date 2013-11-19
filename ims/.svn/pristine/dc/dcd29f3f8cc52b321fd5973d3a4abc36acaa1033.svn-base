@@ -1,0 +1,2 @@
+set solib-search-path ./obj/local/armeabi
+directory /Users/tju/Workspaces/library/android/ndk/platforms/android-8/arch-arm/usr/include jni/aac/inc aac/src/asm/ARMV5E jni/rtmpdump /Users/tju/Workspaces/library/android/ndk/sources/cxx-stl/system/include

@@ -1,0 +1,1 @@
+server.host=0.0.0.0server.port=1974server.maxCapacity=10000server.writeTimeout=30server.bothIdleTime=600audio.folder=/usr/local/tomcat/webapps/ims/audio/
