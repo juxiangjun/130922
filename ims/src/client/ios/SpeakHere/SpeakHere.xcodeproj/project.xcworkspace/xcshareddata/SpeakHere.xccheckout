@@ -5,48 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>CFB8D97E-7C14-41C0-B48D-E95D3D840694</string>
+	<string>960B4B3B-1D1C-4AE3-AB65-E68CBC69C5CA</string>
 	<key>IDESourceControlProjectName</key>
 	<string>SpeakHere</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>3F623653-C9BF-4451-BEBC-69C58B85D428</key>
-		<string>ssh://github.com/juxiangjun/eme.git</string>
-		<key>EE3C67D7-D692-4854-B399-0B3DDD89342E</key>
-		<string>https://github.com/saiten/ios-librtmp</string>
+		<key>36747400-B18B-4879-B4B2-CEE98B984704</key>
+		<string>ssh://github.com/juxiangjun/130922.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ims/src/client/ios/SpeakHere/SpeakHere.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>3F623653-C9BF-4451-BEBC-69C58B85D428</key>
+		<key>36747400-B18B-4879-B4B2-CEE98B984704</key>
 		<string>../../../../../../..</string>
-		<key>EE3C67D7-D692-4854-B399-0B3DDD89342E</key>
-		<string>../../../../../../../../../Downloads/ios-librtmp</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/juxiangjun/eme.git</string>
+	<string>ssh://github.com/juxiangjun/130922.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>3F623653-C9BF-4451-BEBC-69C58B85D428</string>
+	<string>36747400-B18B-4879-B4B2-CEE98B984704</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>3F623653-C9BF-4451-BEBC-69C58B85D428</string>
+			<string>36747400-B18B-4879-B4B2-CEE98B984704</string>
 			<key>IDESourceControlWCCName</key>
 			<string>eme</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>EE3C67D7-D692-4854-B399-0B3DDD89342E</string>
-			<key>IDESourceControlWCCName</key>
-			<string>ios-librtmp</string>
 		</dict>
 	</array>
 </dict>
