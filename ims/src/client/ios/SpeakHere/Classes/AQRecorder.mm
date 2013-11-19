@@ -124,15 +124,30 @@ void AQRecorder::MyInputBufferHandler(	void *								inUserData,
           int len = [data length] + 1;
           NSLog(@"DATA length %d",[data length]);            
           FLVTag *tag = [[FLVTag alloc] initWithTagData:previous :timestamp :data];
-          
-          const char *packet = (char *)[tag getTagData];
-          RTMP_Write(connPublish, packet, len+4+11);
-        
-          XThrowIfError(AudioFileWritePackets(aqr->mRecordFile, FALSE, inBuffer->mAudioDataByteSize,
-											 inPacketDesc, aqr->mRecordPacket, &inNumPackets, inBuffer->mAudioData),
-					   "AudioFileWritePackets failed");
-			aqr->mRecordPacket += inNumPackets;
           previous = len + 11;
+
+          const char *packetBody = (char *)[tag getTagData];
+            
+//            RTMPPacket packet = connPublish->m_write;
+//            RTMPPacket_Alloc(&packet, len+4+11);
+//            packet.m_headerType = RTMP_PACKET_SIZE_MEDIUM;
+//            packet.m_packetType = RTMP_PACKET_TYPE_VIDEO;
+//            packet.m_body = (char *)[tag getTagData];
+//            RTMP_SendPacket(connPublish, &packet, len+4+11);
+          int i = RTMP_Write(connPublish, packetBody, len+4+11);
+        
+          NSLog(@"rtmp write return value %d", i);
+        
+          XThrowIfError(
+                AudioFileWritePackets(aqr->mRecordFile, FALSE,
+                     inBuffer->mAudioDataByteSize,
+                     inPacketDesc, aqr->mRecordPacket,
+                     &inNumPackets, inBuffer->mAudioData),
+                     "AudioFileWritePackets failed");
+            
+			aqr->mRecordPacket += inNumPackets;
+          
+            
 		}
 		
 		// if we're not stopping, re-enqueue the buffe so that it gets filled again
@@ -222,7 +237,7 @@ void AQRecorder::StartRecord(CFStringRef inRecordFile)
 {
     previous = 0;
     timestamp = 0;
-    const char *rtmpURL ="rtmp://192.168.7.96:1935/oflaDemo/998";
+    const char *rtmpURL ="rtmp://10.0.0.12:1935/oflaDemo/998";
     connPublish = RTMP_Alloc();
     RTMP_Init(connPublish);
     RTMP_SetupURL(connPublish, (char*) rtmpURL);

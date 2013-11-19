@@ -97,7 +97,7 @@ const int COMMAND_GET_FIENDS_LIST = 0x3000;
 /**加好友请求*/
 const int COMMAND_SEND_ADD_FRIEND_REQUEST = 0x3001;
 
-/**同总加好友请求*/
+/**同意加好友请求*/
 const int COMMAND_HANDLE_ADD_FRIEND_REQUEST = 0x3002;
 
 /**删除好友*/

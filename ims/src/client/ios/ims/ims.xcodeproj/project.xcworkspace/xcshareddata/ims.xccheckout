@@ -5,38 +5,38 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>6FAEFC29-E29C-4A44-9CC2-512FC23D346B</string>
+	<string>54812DB4-C793-41C6-B344-4C8481B847CE</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ims</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>3F623653-C9BF-4451-BEBC-69C58B85D428</key>
-		<string>ssh://github.com/juxiangjun/eme.git</string>
-		<key>EE3C67D7-D692-4854-B399-0B3DDD89342E</key>
+		<key>26A14E3B-DF8C-4206-9E1B-8EBCD0B1B0CD</key>
 		<string>https://github.com/saiten/ios-librtmp</string>
+		<key>36747400-B18B-4879-B4B2-CEE98B984704</key>
+		<string>ssh://github.com/juxiangjun/130922.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ims/src/client/ios/ims/ims.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>3F623653-C9BF-4451-BEBC-69C58B85D428</key>
-		<string>../../../../../../..</string>
-		<key>EE3C67D7-D692-4854-B399-0B3DDD89342E</key>
+		<key>26A14E3B-DF8C-4206-9E1B-8EBCD0B1B0CD</key>
 		<string>../../../../../../../../../Downloads/ios-librtmp</string>
+		<key>36747400-B18B-4879-B4B2-CEE98B984704</key>
+		<string>../../../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/juxiangjun/eme.git</string>
+	<string>ssh://github.com/juxiangjun/130922.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>3F623653-C9BF-4451-BEBC-69C58B85D428</string>
+	<string>36747400-B18B-4879-B4B2-CEE98B984704</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>3F623653-C9BF-4451-BEBC-69C58B85D428</string>
+			<string>36747400-B18B-4879-B4B2-CEE98B984704</string>
 			<key>IDESourceControlWCCName</key>
 			<string>eme</string>
 		</dict>
@@ -44,7 +44,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>EE3C67D7-D692-4854-B399-0B3DDD89342E</string>
+			<string>26A14E3B-DF8C-4206-9E1B-8EBCD0B1B0CD</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ios-librtmp</string>
 		</dict>

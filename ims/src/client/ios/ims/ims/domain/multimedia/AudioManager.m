@@ -201,12 +201,12 @@ static AudioManager* audioManager = nil;
 
 
 #pragma mark --- Headphone changed ---
-/*
+
 - (void) headphonesDetectorStateChanged: (HeadphonesDetector *) headphonesDetector {
-    [self proximityChanged:nil];
+    //[self proximityChanged:nil];
 }
 
-
+/*
 - (void)proximityChanged:(NSNotification*)sender {
     
     if ([[HeadphonesDetector sharedDetector] headphonesArePlugged]) {

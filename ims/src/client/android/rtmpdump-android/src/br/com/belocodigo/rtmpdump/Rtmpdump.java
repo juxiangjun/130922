@@ -33,7 +33,6 @@ public class Rtmpdump extends Activity {
 	Button btnRecord;
 	private boolean stopRecording = true;
 	
-	
 	public static final int STOPPED = 0;
 	public static final int RECORDING = 1;
 	int status = STOPPED;
@@ -48,7 +47,7 @@ public class Rtmpdump extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        recorderManager.setMode(RecorderManager.TO_SERVER);
+        recorderManager.setMode(RecorderManager.TO_FILE);
         recorderManager.setRunning(true);
 		Thread cmThread = new Thread(recorderManager);
 		cmThread.start();
@@ -260,7 +259,6 @@ public class Rtmpdump extends Activity {
 					
 					isFirstPackage = false;
 					Log.d(LOG_TAG, "current byte location:"+index);
-					
 					//break;
 				}
 			}

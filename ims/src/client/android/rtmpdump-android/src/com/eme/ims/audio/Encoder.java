@@ -41,8 +41,8 @@ public class Encoder implements Runnable {
 				continue;
 			}
 			synchronized (mutex) {
-				//getSize = speex.encode(rawdata, 0, processedData, leftSize);
-				getSize = aacEncoder.encode(rawdata, processedData);
+				getSize = speex.encode(rawdata, 0, processedData, leftSize);
+				//getSize = aacEncoder.encode(rawdata, processedData);
 				setIdle();
 			}
 			if (getSize > 0) {
