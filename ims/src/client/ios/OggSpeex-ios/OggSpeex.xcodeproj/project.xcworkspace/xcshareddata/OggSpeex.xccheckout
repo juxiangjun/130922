@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FBEC84BB-814F-477F-9F28-90D2E09B7C4B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>OggSpeex</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>74A22441-503D-4C3E-A9E3-0AE1DBD7A139</key>
+		<string>ssh://github.com/juxiangjun/130922.git</string>
+		<key>E84DFDD9-30D3-45EB-A4F8-5B77F95A5A83</key>
+		<string>https://github.com/saiten/ios-librtmp</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ims/src/client/ios/OggSpeex-ios/OggSpeex.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>74A22441-503D-4C3E-A9E3-0AE1DBD7A139</key>
+		<string>../../../../../../..</string>
+		<key>E84DFDD9-30D3-45EB-A4F8-5B77F95A5A83</key>
+		<string>../../../../../../../../../Downloads/ios-librtmp</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/juxiangjun/130922.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>74A22441-503D-4C3E-A9E3-0AE1DBD7A139</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>74A22441-503D-4C3E-A9E3-0AE1DBD7A139</string>
+			<key>IDESourceControlWCCName</key>
+			<string>eme</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E84DFDD9-30D3-45EB-A4F8-5B77F95A5A83</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ios-librtmp</string>
+		</dict>
+	</array>
+</dict>
+</plist>
