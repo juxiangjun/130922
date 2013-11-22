@@ -68,6 +68,10 @@ public class MsgProtocol {
 		/**断开连接*/
 		public final static int DISCONNECT = 0x0002;
 		
+		/**
+		 * 消息处理
+		 * =====================================================================
+		 */
 		/**.发送点对点消息*/
 		public final static int SEND_P2P_MESSAGE = 0x1001;
 		public final static int SEND_P2P_MESSAGE_RESPONSE = 0x1002;
@@ -78,6 +82,10 @@ public class MsgProtocol {
 		public final static int SEND_P2G_MESSAGE_RESPONSE = 0x1005;
 		public final static int ON_RECEIVED_GROUP_MESSAGE =  0x1006;
 		
+		/**
+		 * 群组操作
+		 * =====================================================================
+		 */
 		
 		/**获取群组列表*/
 		public final static int GET_GROUP_LIST = 0x2000;
@@ -85,11 +93,22 @@ public class MsgProtocol {
 		/**邀请加入群组*/
 		public final static int SEND_GROUP_INVITATION = 0x2001;
 		
-		/**接受群组邀请*/
+		/**接受群组邀请, 需要更新群组列表...*/
 		public final static int ACCEPT_GROUP_INVITATION = 0x2002;
 		
-		/**退出群组*/
+		/**退出群组， 需更新群组列表*/
 		public final static int QUIT_GROUP = 0x2003;
+		
+		/** 移除群组成员 */
+		public final static int REMOVE_MEMBER_FROM_GROUP = 0x2004;
+		
+		/**删除群组, 创建人退出群组 */
+		public final static int REMOVE_GROUP = 0x2005;
+		
+		/**
+		 * 好友操作
+		 * ===================================================================
+		 */
 		
 		/**获取好友列表*/
 		public final static int GET_FIENDS_LIST = 0x3000;
@@ -97,12 +116,11 @@ public class MsgProtocol {
 		/**加好友请求*/
 		public final static int SEND_ADD_FRIEND_REQUEST = 0x3001;
 		
-		/**同总加好友请求*/
+		/**同意加好友请求*/
 		public final static int HANDLE_ADD_FRIEND_REQUEST = 0x3002;
 		
 		/**删除好友*/
 		public final static int DELETE_FRIEND = 0x3003;
-		
 		
 	}
 	

@@ -47,7 +47,7 @@ public class Rtmpdump extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        recorderManager.setMode(RecorderManager.TO_FILE);
+        recorderManager.setMode(RecorderManager.TO_SERVER);
         recorderManager.setRunning(true);
 		Thread cmThread = new Thread(recorderManager);
 		cmThread.start();

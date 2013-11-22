@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FLVTag.h"
 
-@interface FLVFIle : NSObject
+@interface FLVFIle : NSObject {
+    NSString *localFileName;
+    NSMutableData *tags;
+}
+
+-(id) initWithFileName :(NSString *)fileName;
+-(void) addTag :(FLVTag *) tag;
+-(void) close;
+
+@property (nonatomic, retain) NSString *localFileName;
+
 
 @end

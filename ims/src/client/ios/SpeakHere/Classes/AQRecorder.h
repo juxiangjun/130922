@@ -54,7 +54,6 @@ Copyright (C) 2012 Apple Inc. All Rights Reserved.
 #include "CAStreamBasicDescription.h"
 #include "CAXException.h"
 
-
 #define kNumberRecordBuffers	3
 
 class AQRecorder 
@@ -82,9 +81,7 @@ class AQRecorder
 		SInt64						mRecordPacket; // current packet number in record file
 		CAStreamBasicDescription	mRecordFormat;
 		Boolean						mIsRunning;
-        
-       
-        
+
 		void			CopyEncoderCookieToFile();
 		void			SetupAudioFormat(UInt32 inFormatID);
 		int				ComputeRecordBufferSize(const AudioStreamBasicDescription *format, float seconds);

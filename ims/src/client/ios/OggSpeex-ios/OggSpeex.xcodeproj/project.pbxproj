@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		6210D99E183CE48C009E42E0 /* RTMPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6210D99D183CE48C009E42E0 /* RTMPClient.m */; };
 		6210D9A0183CE7DF009E42E0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6210D99F183CE7DF009E42E0 /* libz.dylib */; };
-		6210D9A2183CE80A009E42E0 /* librtmp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6210D9A1183CE80A009E42E0 /* librtmp.a */; };
-		6210D9A5183CE816009E42E0 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6210D9A3183CE816009E42E0 /* libcrypto.a */; };
-		6210D9A6183CE816009E42E0 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6210D9A4183CE816009E42E0 /* libssl.a */; };
 		6210D9B0183CE882009E42E0 /* FLVFIle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6210D9AD183CE882009E42E0 /* FLVFIle.m */; };
 		6210D9B1183CE882009E42E0 /* FLVTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 6210D9AF183CE882009E42E0 /* FLVTag.m */; };
+		62B8B06E183F4251007283CC /* librtmp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B8B06D183F4251007283CC /* librtmp.a */; };
+		62B8B071183F426E007283CC /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B8B06F183F426E007283CC /* libcrypto.a */; };
+		62B8B072183F426E007283CC /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B8B070183F426E007283CC /* libssl.a */; };
 		901BDFFD16650EAF007BF70B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 901BDFFC16650EAF007BF70B /* AudioToolbox.framework */; };
 		901BDFFF16650EB7007BF70B /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 901BDFFE16650EB7007BF70B /* CoreAudio.framework */; };
 		90B4A9BA1779D04500EB37BA /* OggSpeexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B4A9B91779D04500EB37BA /* OggSpeexViewController.m */; };
@@ -111,6 +111,9 @@
 		6210D9AD183CE882009E42E0 /* FLVFIle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLVFIle.m; sourceTree = "<group>"; };
 		6210D9AE183CE882009E42E0 /* FLVTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVTag.h; sourceTree = "<group>"; };
 		6210D9AF183CE882009E42E0 /* FLVTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLVTag.m; sourceTree = "<group>"; };
+		62B8B06D183F4251007283CC /* librtmp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librtmp.a; path = "../../../../../../../Downloads/ios-librtmp/lib/librtmp.a"; sourceTree = "<group>"; };
+		62B8B06F183F426E007283CC /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../../../../../../../Downloads/openssl/lib/libcrypto.a; sourceTree = "<group>"; };
+		62B8B070183F426E007283CC /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../../../../../../../Downloads/openssl/lib/libssl.a; sourceTree = "<group>"; };
 		901BDFFC16650EAF007BF70B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		901BDFFE16650EB7007BF70B /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		90B4A9B81779D04500EB37BA /* OggSpeexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OggSpeexViewController.h; sourceTree = "<group>"; };
@@ -264,9 +267,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6210D9A5183CE816009E42E0 /* libcrypto.a in Frameworks */,
-				6210D9A6183CE816009E42E0 /* libssl.a in Frameworks */,
-				6210D9A2183CE80A009E42E0 /* librtmp.a in Frameworks */,
+				62B8B071183F426E007283CC /* libcrypto.a in Frameworks */,
+				62B8B072183F426E007283CC /* libssl.a in Frameworks */,
+				62B8B06E183F4251007283CC /* librtmp.a in Frameworks */,
 				6210D9A0183CE7DF009E42E0 /* libz.dylib in Frameworks */,
 				90B4A9F41779DB7E00EB37BA /* AVFoundation.framework in Frameworks */,
 				901BDFFF16650EB7007BF70B /* CoreAudio.framework in Frameworks */,
@@ -359,6 +362,9 @@
 		F1DCBA661634E855000EB8C9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				62B8B06F183F426E007283CC /* libcrypto.a */,
+				62B8B070183F426E007283CC /* libssl.a */,
+				62B8B06D183F4251007283CC /* librtmp.a */,
 				6210D9A3183CE816009E42E0 /* libcrypto.a */,
 				6210D9A4183CE816009E42E0 /* libssl.a */,
 				6210D9A1183CE80A009E42E0 /* librtmp.a */,

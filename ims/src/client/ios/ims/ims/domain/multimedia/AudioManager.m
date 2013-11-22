@@ -38,7 +38,6 @@ static AudioManager* audioManager = nil;
         [HeadphonesDetector sharedDetector].delegate = self;
         [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayAndRecord error: nil];
         //[self updateRoute];
-
     }
     return self;
 ;

@@ -48,15 +48,6 @@ Copyright (C) 2012 Apple Inc. All Rights Reserved.
 */
 
 #include "AQRecorder.h"
-#import "FLVTag.h"
-#import "rtmp.h"
-
-static int previous = 0;
-static double baseTime = 0;
-static int timestamp = 0;
-static double currentTime  =0;
-static RTMP *connPublish;
-
 
 // ____________________________________________________________________________________
 // Determine the size, in bytes, of a buffer necessary to represent the supplied number
@@ -104,50 +95,13 @@ void AQRecorder::MyInputBufferHandler(	void *								inUserData,
 										const AudioStreamPacketDescription*	inPacketDesc)
 {
 	AQRecorder *aqr = (AQRecorder *)inUserData;
-    
 	try {
 		if (inNumPackets > 0) {
-         // write packets to file
-            if (baseTime == 0) {
-                timestamp = 0;
-                //baseTime = [[NSDate date] timeIntervalSince1970];
-                baseTime  = CACurrentMediaTime() * 1000;;
-            } else {
-                //currentTime = [[NSDate date] timeIntervalSince1970];
-                currentTime = CACurrentMediaTime()  * 1000;
-                timestamp = currentTime - baseTime;
-                NSLog(@"Current Time = %d",timestamp);
-            }
-
-          NSData *data = [NSData dataWithBytes:inBuffer->mAudioData length:inBuffer->mAudioDataByteSize];
-        
-          int len = [data length] + 1;
-          NSLog(@"DATA length %d",[data length]);            
-          FLVTag *tag = [[FLVTag alloc] initWithTagData:previous :timestamp :data];
-          previous = len + 11;
-
-          const char *packetBody = (char *)[tag getTagData];
-            
-//            RTMPPacket packet = connPublish->m_write;
-//            RTMPPacket_Alloc(&packet, len+4+11);
-//            packet.m_headerType = RTMP_PACKET_SIZE_MEDIUM;
-//            packet.m_packetType = RTMP_PACKET_TYPE_VIDEO;
-//            packet.m_body = (char *)[tag getTagData];
-//            RTMP_SendPacket(connPublish, &packet, len+4+11);
-          int i = RTMP_Write(connPublish, packetBody, len+4+11);
-        
-          NSLog(@"rtmp write return value %d", i);
-        
-          XThrowIfError(
-                AudioFileWritePackets(aqr->mRecordFile, FALSE,
-                     inBuffer->mAudioDataByteSize,
-                     inPacketDesc, aqr->mRecordPacket,
-                     &inNumPackets, inBuffer->mAudioData),
-                     "AudioFileWritePackets failed");
-            
+			// write packets to file
+			XThrowIfError(AudioFileWritePackets(aqr->mRecordFile, FALSE, inBuffer->mAudioDataByteSize,
+											 inPacketDesc, aqr->mRecordPacket, &inNumPackets, inBuffer->mAudioData),
+					   "AudioFileWritePackets failed");
 			aqr->mRecordPacket += inNumPackets;
-          
-            
 		}
 		
 		// if we're not stopping, re-enqueue the buffe so that it gets filled again
@@ -158,8 +112,6 @@ void AQRecorder::MyInputBufferHandler(	void *								inUserData,
 		fprintf(stderr, "Error: %s (%s)\n", e.mOperation, e.FormatError(buf));
 	}
 }
-
-
 
 AQRecorder::AQRecorder()
 {
@@ -207,50 +159,28 @@ void AQRecorder::SetupAudioFormat(UInt32 inFormatID)
 	memset(&mRecordFormat, 0, sizeof(mRecordFormat));
 
 	UInt32 size = sizeof(mRecordFormat.mSampleRate);
-    
 	XThrowIfError(AudioSessionGetProperty(	kAudioSessionProperty_CurrentHardwareSampleRate,
 										&size, 
 										&mRecordFormat.mSampleRate), "couldn't get hardware sample rate");
 
 	size = sizeof(mRecordFormat.mChannelsPerFrame);
-    
 	XThrowIfError(AudioSessionGetProperty(	kAudioSessionProperty_CurrentHardwareInputNumberChannels, 
 										&size, 
 										&mRecordFormat.mChannelsPerFrame), "couldn't get input channel count");
-    
 			
 	mRecordFormat.mFormatID = inFormatID;
-    
 	if (inFormatID == kAudioFormatLinearPCM)
 	{
 		// if we want pcm, default to signed 16-bit little-endian
 		mRecordFormat.mFormatFlags = kLinearPCMFormatFlagIsSignedInteger | kLinearPCMFormatFlagIsPacked;
 		mRecordFormat.mBitsPerChannel = 16;
-       int packetSize = (mRecordFormat.mBitsPerChannel / 8) * mRecordFormat.mChannelsPerFrame;
-		mRecordFormat.mBytesPerPacket = mRecordFormat.mBytesPerFrame = packetSize;
+		mRecordFormat.mBytesPerPacket = mRecordFormat.mBytesPerFrame = (mRecordFormat.mBitsPerChannel / 8) * mRecordFormat.mChannelsPerFrame;
 		mRecordFormat.mFramesPerPacket = 1;
 	}
 }
 
-
 void AQRecorder::StartRecord(CFStringRef inRecordFile)
 {
-    previous = 0;
-    timestamp = 0;
-    const char *rtmpURL ="rtmp://10.0.0.12:1935/oflaDemo/998";
-    connPublish = RTMP_Alloc();
-    RTMP_Init(connPublish);
-    RTMP_SetupURL(connPublish, (char*) rtmpURL);
-    RTMP_EnableWrite(connPublish);
-    RTMP_Connect(connPublish, NULL);
-    RTMP_ConnectStream(connPublish,0);
-    
-    
-    
-    NSLog(@"ready to sleep.");
-    [NSThread sleepForTimeInterval:1.0];
-     NSLog(@"waked up.");
-    
 	int i, bufferByteSize;
 	UInt32 size;
 	CFURLRef url = nil;
@@ -258,21 +188,16 @@ void AQRecorder::StartRecord(CFStringRef inRecordFile)
 	try {		
 		mFileName = CFStringCreateCopy(kCFAllocatorDefault, inRecordFile);
 
-        // specify the recording format
-        //SetupAudioFormat(kAudioFormatLinearPCM);
-        SetupAudioFormat(kAudioFormatMPEG4AAC);
-		
-       
+		// specify the recording format
+		SetupAudioFormat(kAudioFormatLinearPCM);
 		
 		// create the queue
 		XThrowIfError(AudioQueueNewInput(
 									  &mRecordFormat,
 									  MyInputBufferHandler,
 									  this /* userData */,
-									  NULL /* run loop */,
-                                      NULL /* run loop mode */,
-									  0 /* flags */,
-                                      &mQueue), "AudioQueueNewInput failed");
+									  NULL /* run loop */, NULL /* run loop mode */,
+									  0 /* flags */, &mQueue), "AudioQueueNewInput failed");
 		
 		// get the record format back from the queue's audio converter --
 		// the file may require a more specific stream description than was necessary to create the encoder.
