@@ -20,5 +20,19 @@
 	<bean name="imsWebClient" class="com.eme.ims.servlet.ImsWebClient">
 		<constructor-arg index="0" value="client.ini"></constructor-arg>
 	</bean>
+	
+	
+	<bean name="jedisPool" class="com.eme.ims.cache.JedisPool">
+		<constructor-arg index="0" value="${redis.host}"></constructor-arg>
+		<constructor-arg index="1" value="${redis.port}"></constructor-arg>
+		<constructor-arg index="2" value="${redis.pool_size}"></constructor-arg>
+	</bean>
 
+
+	<bean name="memcachedPool" class="com.eme.ims.cache.MemcachedPool">
+		<constructor-arg index="0" value="${memcached.host}"></constructor-arg>
+		<constructor-arg index="1" value="${memcached.port}"></constructor-arg>
+		<constructor-arg index="2" value="${memcached.pool_size}"></constructor-arg>
+	</bean>
+	
 </beans>

@@ -305,6 +305,31 @@
 				</archive>
 			</configuration>	
 			<executions>
+			
+				<execution>
+					<id>ims-msg-worker</id>
+					<goals>
+						<goal>jar</goal>
+					</goals>
+					<phase>package</phase>
+					<configuration>
+						<classifier>worker</classifier>
+						<finalName>${project.artifactId}-${project.version}</finalName>
+						<archive>
+							<manifest>
+								<addClasspath>true</addClasspath>
+								<classpathPrefix>lib/</classpathPrefix>
+								<mainClass>com.eme.ims.cache.App</mainClass>
+							</manifest>
+						</archive>
+						<includes>
+							<include>**/codec/Message</include>
+							<include>**/utils/*</include>
+							<include>logback.xml</include>
+							<include>worker.ini</include>
+						</includes>
+					</configuration>
+				</execution>
 				<execution>
 					<id>ims-server</id>
 					<goals>
