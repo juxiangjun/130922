@@ -17,11 +17,6 @@
 		<constructor-arg index="1" value="0"></constructor-arg>
 	</bean>
 	
-	<bean name="imsWebClient" class="com.eme.ims.servlet.ImsWebClient">
-		<constructor-arg index="0" value="client.ini"></constructor-arg>
-	</bean>
-	
-	
 	<bean name="jedisPool" class="com.eme.ims.cache.JedisPool">
 		<constructor-arg index="0" value="${redis.host}"></constructor-arg>
 		<constructor-arg index="1" value="${redis.port}"></constructor-arg>

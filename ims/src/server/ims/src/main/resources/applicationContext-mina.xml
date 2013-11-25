@@ -58,4 +58,8 @@
 		<property name="filterChainBuilder" ref="filterChainBuilder" />
 	</bean>
 	
+	
+	<bean name="imsWebClient" class="com.eme.ims.servlet.ImsWebClient">
+		<constructor-arg index="0" value="client.ini"></constructor-arg>
+	</bean>
 </beans>

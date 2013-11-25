@@ -37,7 +37,7 @@ public class ImsWebClient {
 	
 	private  void initialize () {
 		
-		PropertyConfig config = new PropertyConfig(configFileName, 1);
+		PropertyConfig config = new PropertyConfig(configFileName, 0);
 		String host = config.getString("server.host");
 		Integer port = config.getInteger("server.port");
 		

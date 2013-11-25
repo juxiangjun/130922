@@ -90,7 +90,6 @@
     </dependency>
     
     <!-- db -->
-    <!--  
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
@@ -102,7 +101,6 @@
       <artifactId>c3p0</artifactId>
       <version>${db.c3p0.version}</version>
     </dependency>
-    
     <dependency>
       <groupId>commons-dbcp</groupId>
       <artifactId>commons-dbcp</artifactId>
@@ -116,7 +114,7 @@
       <version>1.6.12</version>
       <scope>compile</scope>
     </dependency>
-    -->
+    
     <dependency>
       <groupId>commons-pool</groupId>
       <artifactId>commons-pool</artifactId>
@@ -144,7 +142,6 @@
     </dependency>
     
     <!-- struts -->
-    <!--  
     <dependency>
       <groupId>org.apache.struts</groupId>
       <artifactId>struts2-core</artifactId>
@@ -184,9 +181,7 @@
       <artifactId>struts2-rest-plugin</artifactId>
       <version>${struts.version}</version>
     </dependency>
-    -->
     <!-- hibernate -->
-    <!--  
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
@@ -199,7 +194,6 @@
       <version>4.0.0-CR1</version>
       <scope>provided</scope>
     </dependency>
-    -->
     <!-- spring -->
     <dependency>
       <groupId>org.springframework</groupId>
