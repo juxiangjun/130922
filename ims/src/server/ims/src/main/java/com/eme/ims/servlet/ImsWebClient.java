@@ -58,6 +58,7 @@ public class ImsWebClient {
 	}
 	
 	private void register(MessageClient client, Message message) {
+		message.setFrom("00000-00000-00000-00000-00000-000001");
 		message.setCommandId(MsgProtocol.Command.REGISTRATION);
 		client.sendMessage(message);
 	}
