@@ -16,7 +16,7 @@ public class MsgProtocol {
 		/**语音留言*/
 		public final static short VOICE = 0x3000;
 		/**语音流*/
-		public final static short VOICE_STREAM = 0x4000;
+		public final static short AUDIO_STREAM = 0x4000;
 	}
 	
 	public class Error {
