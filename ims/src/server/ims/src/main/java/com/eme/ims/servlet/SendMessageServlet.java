@@ -60,7 +60,7 @@ public class SendMessageServlet extends HttpServlet{
 			message.setTo(to);
 			message.setGroupId( groupId);
 			message.setCommandId(commandId);
-			message.setContents(contents);
+			message.setContents(contents.getBytes());
 			
 			boolean result = client.sendMessage(message);
 			response.getWriter().write(String.valueOf(result));

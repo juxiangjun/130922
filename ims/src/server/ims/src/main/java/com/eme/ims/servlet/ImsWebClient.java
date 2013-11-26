@@ -102,8 +102,7 @@ public class ImsWebClient {
 		Jedis jedis = this.jedisPool.getJedis();
 		String key = message.getGroupId();
 		Object obj = jedis.get(key);
-		
-		String[] members = message.getContents().split(",");
+		String[] members = message.getContents().toString().split(",");
 		for (String member : members) {
 			if (obj == null) {
 				jedis.set(key, member);
@@ -130,7 +129,7 @@ public class ImsWebClient {
 		synchronized(jedis) {
 			String key = message.getGroupId();
 			Object obj = jedis.get(key);
-			String[] removedMembers = message.getContents().split(",");
+			String[] removedMembers = message.getContents().toString().split(",");
 			if (obj != null) {
 				@SuppressWarnings("unchecked")
 				List<String> members = (List<String>) obj;

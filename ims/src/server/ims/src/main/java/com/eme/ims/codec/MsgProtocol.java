@@ -15,6 +15,8 @@ public class MsgProtocol {
 		public final static short EMOTICON = 0x2000;
 		/**语音留言*/
 		public final static short VOICE = 0x3000;
+		/**语音流*/
+		public final static short VOICE_STREAM = 0x4000;
 	}
 	
 	public class Error {
