@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/titleFrame"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top" >
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bt_back"
+            android:onClick="chat_back"
+            android:textColor="#fff"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/layout_title"
+            android:layout_width="180dip"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_camera"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_camera"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:fillViewport="true" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:background="@drawable/detail_bg1"
+                android:orientation="vertical" >
+
+                <GridView
+                    android:id="@+id/gallery"
+                    android:layout_width="fill_parent"
+                    android:layout_height="160dip"
+                    android:layout_gravity="center"
+                    android:columnWidth="50dp"
+                    android:gravity="center"
+                    android:horizontalSpacing="5dp"
+                    android:numColumns="4"
+                    android:scrollbars="none"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="5dp" />
+                <!--
+                <Gallery
+                    android:id="@+id/gallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:spacing="5dip" />
+                -->
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/startAct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dip"
+                android:src="@drawable/group_act" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:background="@drawable/detail_bg1"
+                android:orientation="vertical" >
+
+                <com.dyt.lpclub.activity.view.HorizontalScrollViewWithListener
+                    android:id="@+id/sv_gridview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="180dip"
+                    android:scrollbars="none" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <GridView
+                            android:id="@+id/gridview"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.0"
+                            android:columnWidth="90dp"
+                            android:gravity="center"
+                            android:horizontalSpacing="5dp"
+                            android:numColumns="auto_fit"
+                            android:stretchMode="columnWidth"
+                            android:verticalSpacing="5dp" />
+                    </LinearLayout>
+                </com.dyt.lpclub.activity.view.HorizontalScrollViewWithListener>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/startChat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dip"
+                android:layout_marginTop="10dip"
+                android:src="@drawable/start_chat" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

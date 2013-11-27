@@ -1,0 +1,49 @@
+//
+// Prefix header for all source files of the 'DYT' target in the 'DYT' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "RFService.h"
+    #import "RFRequest.h"
+    #import "RFResponse.h"
+    #import "SBJson.h"
+    #import "MBProgressHUD.h"
+    #import "UIViewExt.h"
+    #import "UITools.h"
+    #import "NSDate-Utilities.h"
+    #import <QuartzCore/QuartzCore.h>
+    #import "WebServiceManager.h"
+    #import "DataManager.h"
+    #import "YXSoundManager.h"
+    #import "YXResourceManager.h"
+    #import <sqlite3.h>
+    #import "Reachability.h"
+    #import "VoiceConverter.h"
+    #import "UIImage+ProportionalFill.h"
+    #import "Reachability.h"
+#endif
+
+
+#define NOTICELIMIT     5
+#define THUMBWIDTH      140
+#define THUMBHEIGHT     80
+#define ONECHATINPAGE   10
+#define ONEGROUPPAGE    8
+
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+
+
+
+
+
+
+
+
