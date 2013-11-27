@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Lp">
+
+
+	<select id="get_friend" parameterType="hashmap" resultType="hashmap">
+		SELECT a.id as userid, a.name, loginid, sex, job,title, a.labe label,
+		a.imgurl imgpath,
+		concat(b.name ,b2.name) AS area ,c.name AS teamname ,ifnull(d.type,'2') type
+		FROM cs_user a
+		LEFT JOIN d_area b ON a.areaid=b.id
+		LEFT JOIN d_area b2 ON a.area2id=b2.id
+		LEFT JOIN tm_team c ON a.teamid=c.id
+		LEFT JOIN lp_friend d ON a.id=d.uid AND d.toid=#{userid}
+		WHERE a.id=#{toid}
+	</select>
+
+	<select id="get_img" parameterType="String" resultType="hashmap">
+		SELECT b.path imgurl
+		FROM pr_imggroup a,pr_img b WHERE a.id=b.imggroupid AND a.uid= #{toid}
+		LIMIT 0,20
+	</select>
+
+
+	<select id="get_friendlist" parameterType="hashmap" resultType="hashmap">
+		SELECT a.id toid ,ifnull(a.imgpath,<include refid="defaultImgUrl"/>  ) imgpath,a.label ,'0' AS type,a.name FROM lp_group a ,lp_groupuser b	WHERE a.id=b.gid AND b.uid=#{userid} 
+		 <if test="name != null"> and a.name like '%${name}%'</if>
+        UNION
+		SELECT b.id,ifnull(b.imgurl,<include refid="defaultImgUrl"/>  )  imgpath,b.labe,'1' AS type ,b.name FROM lp_friend a, cs_user b WHERE a.toid=b.id AND a.uid=#{userid}
+		 <if test="name != null"> and b.name like '%${name}%'</if>
+		UNION
+		SELECT b.id,ifnull(b.imgurl,<include refid="defaultImgUrl"/>  )  imgpath,b.labe,'2' AS type ,b.name FROM cs_user b WHERE b.cid=#{cid}
+		 <if test="name != null"> and b.name like '%${name}%'</if>
+		 ORDER BY type,name  LIMIT ${pagenum},${pagecount} 
+
+	</select>
+	
+	
+		<select id="get_friendlistcount" parameterType="hashmap" resultType="int">
+		select count(*) from (
+	     SELECT 1 FROM lp_group a ,lp_groupuser b	WHERE a.id=b.gid AND b.uid=#{userid} 
+		 <if test="name != null"> and a.name like '%${name}%'</if>
+        UNION all
+		SELECT 1 FROM lp_friend a, cs_user b WHERE a.toid=b.id AND a.uid=#{userid}
+		 <if test="name != null"> and b.name like '%${name}%'</if>
+		UNION all
+		SELECT 1 FROM cs_user b WHERE b.cid=#{cid}
+		 <if test="name != null"> and b.name like '%${name}%'</if>
+		 ) tt
+
+	</select>
+	
+	
+
+	<select id="get_area" resultMap="areaResult">
+		SELECT a.id AS aid ,a.name AS
+		aname,b.id AS bid,b.name AS bname FROM d_area a ,d_area b WHERE
+		a.id=b.reid ORDER BY a.id
+	</select>
+
+	<resultMap id="areaResult" type="Area">
+		<id property="id" column="aid" />
+		<result property="name" column="aname" />
+		<collection property="areaitems2" javaType="ArrayList"
+			ofType="Area2">
+			<id property="id" column="bid" />
+			<result property="name" column="bname" />
+		</collection>
+	</resultMap>
+
+
+	<update id="update_lpGroup" parameterType="hashmap">
+
+		UPDATE lp_group SET name=#{name} WHERE id=#{id}
+
+	</update>
+
+
+
+
+	<insert id="insert_lpGroup" parameterType="hashmap">
+		INSERT INTO lp_group (id, cid, createtime, uid, name, comment)
+		VALUES (#{id},
+		#{cid}, now(), #{userid}, #{name},#{comment})
+	</insert>
+
+	<insert id="insert_lpfriend" parameterType="hashmap">
+		INSERT INTO lp_friend (uid, toid, type)
+		VALUES (#{userid}, #{toid}, #{type})
+	</insert>
+
+	<insert id="insert_lpgroupuser" parameterType="hashmap">
+		INSERT INTO lp_groupuser (uid, gid)
+		VALUES (#{uid}, #{gid})
+	</insert>
+
+	<delete id="del_lpgroup" parameterType="hashmap">
+		delete from lp_group where id= #{id}
+	</delete>
+
+	<delete id="del_lpgroupuser" parameterType="hashmap">
+		delete from lp_groupuser where uid=#{uid} and gid= #{gid}
+	</delete>
+
+	<delete id="del_lpfriend" parameterType="hashmap">
+		delete from lp_friend where uid=#{userid} and toid= #{toid}
+
+	</delete>
+	
+	
+	
+	
+	<sql id="defaultImgUrl"> '/upload/jj.jpg' </sql>
+	
+	
+	
+
+</mapper>

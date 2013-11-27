@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Tony Ju. All rights reserved.
 //
 
-#define HOST @"192.168.7.96";
+#define HOST @"192.168.7.210";
 #define PORT 1974;
 
 #import "SocketConn.h"
@@ -33,7 +33,7 @@
     NSLog(@"ready to connect server.");
     
     if (socket != NULL) {
-        [socket connectToHost:@"192.168.7.210" onPort:1974 error:NULL];
+        [socket connectToHost:@"192.168.7.96" onPort:1974 error:NULL];
         [socket readDataWithTimeout:-1 tag:0];
         [self registration];
     }

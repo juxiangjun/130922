@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="emejis-192.168.7.201"   basedir=".">
+	<property name="programName" value="emejis" />
+	<property name="src.dir" value="${basedir}/src" />
+	<property name="conf.dir" value="${basedir}/config" />
+
+
+	<property name="web.dir" value="${basedir}/WebContent" />
+	<property name="lib.dir" value="${web.dir}/WEB-INF/lib" />
+	<property name="class.dir" value="${basedir}/build/classes" />
+	<property name="package.dir" value="${basedir}/dist" />
+
+	<property name="ip" value="192.168.7.201" />
+	<property name="user" value="root" />
+	<property name="password" value="appeme" />
+
+	<property name="tomcat.home" value="/usr/local/apache-tomcat-7.0.42" />
+	<property name="address" value="${ip}:${tomcat.home}/webapps" />
+	<property name="sleep.time" value="20" />
+
+	<property name="deploy.url" value="http://${ip}:8080/manager/text" />
+	<property name="deploy.username" value="eme" />
+	<property name="deploy.password" value="eme" />
+	<property name="deploy.path" value="/emejis" />
+
+	<property name="catalina.home" value="D:/apache-tomcat-7.0.42" />
+	<path id="tomcat.classpath">
+		<fileset dir="${catalina.home}" includes="lib/*.jar" />
+	</path>
+
+	<taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask" classpathref="tomcat.classpath" />
+
+	<taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask" classpathref="tomcat.classpath" />
+
+
+	<target name="init" description="初始化环境">
+		<echo message="初始化目录" />
+		<echo message="${package.dir}" />
+		<delete dir="${package.dir}" />
+		<mkdir dir="${package.dir}" />
+	</target>
+
+	<target name="packagejar" depends="init" description="打包jar">
+		<echo message="将class打包，输出到${package.dir}" />
+		<jar basedir="${class.dir}" jarfile="${package.dir}/${programName}.jar" />
+	</target>
+
+	<target name="updatejar" depends="packagejar" description="上传jar">
+		<echo message="将jar上传服务器" />
+		<scp file="${package.dir}/${programName}.jar" todir="${user}:${password}@${address}" trust="true" verbose="true" />
+		<echo message="上传完毕" />
+	</target>
+
+	<target name="updatewar" depends="packagewar" description="上传jar">
+		<echo message="将war上传服务器" />
+		<scp file="${package.dir}/${programName}.war" todir="${user}:${password}@${address}" trust="true" verbose="true">
+
+		</scp>
+
+		<scp todir="${user}:${password}@${address}" trust="true" verbose="true">
+			<fileset dir="src_dir">
+				<include name="**/*.java" />
+				<exclude name="WEB-INF/lib/*.jar" />
+			</fileset>
+		</scp>
+
+
+		<echo message="上传完毕" />
+	</target>
+
+
+
+	<target name="packagewar" depends="init" description="打包war">
+		<war destfile="${package.dir}/${programName}.war" webxml="${web.dir}/WEB-INF/web.xml">
+			<classes dir="${class.dir}" />
+			<lib dir="${lib.dir}" />
+			<fileset dir="${web.dir}" excludes="${web.dir}/WEB-INF/**" />
+		</war>
+	</target>
+
+	<target name="remote-tomcat-start">
+		<sshexec host="${ip}" username="${user}" password="${password}" command="${tomcat.home}/bin/startup.sh" trust="true" />
+	</target>
+	<target name="remote-tomcat-stop">
+		<sshexec host="${ip}" username="${user}" password="${password}" command="${tomcat.home}/bin/shutdown.sh" trust="true" />
+		<sleep seconds="${sleep.time}" />
+	</target>
+
+	<target name="deploy" description="Install web application" depends="packagewar,undeploy">
+				
+		<deploy url="${deploy.url}" username="${deploy.username}" password="${deploy.password}" path="${deploy.path}" war="${package.dir}/${programName}.war" />
+		<sleep seconds="1" />
+		<sshexec host="${ip}" username="${user}" password="${password}" command="mv /mnt/raid1/img.bak /mnt/raid1/img" trust="true" />
+				
+		<sshexec host="${ip}" username="${user}" password="${password}" command="ln -s /mnt/raid1/img /root/tom/webapps/emejis/upload/img" trust="true" />
+			
+	
+	</target>
+	
+	
+ 
+	 
+	
+	<target name="undeploy" description="Remove web application">
+		<sshexec host="${ip}" username="${user}" password="${password}" command="mv /mnt/raid1/img /mnt/raid1/img.bak" trust="true" />
+				
+		<undeploy url="${deploy.url}" username="${deploy.username}" password="${deploy.password}" path="${deploy.path}" />
+	</target>
+	
+	<target name="createdb" depends="scpdbsql">
+		<sshexec host="${ip}" username="${user}" password="${password}" command="/usr/local/mysql/bin/mysql -uroot -pappemepwd &lt; /usr/local/mysql/bin/createdb.sql" trust="true" />
+	</target>
+	<target name="scpdbsql"  description="上传库脚本">			 
+			<scp file="D:/crebas.sql" todir="${user}:${password}@${ip}:/usr/local/mysql/bin" trust="true" verbose="true"/>
+		    <scp file="D:/insertshop.sql" todir="${user}:${password}@${ip}:/usr/local/mysql/bin" trust="true" verbose="true"/>
+		    <scp file="D:/mo_area.sql" todir="${user}:${password}@${ip}:/usr/local/mysql/bin" trust="true" verbose="true"/>
+						
+	 </target>
+
+</project>

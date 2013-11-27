@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Person">
+
+	<select id="login" parameterType="hashmap" resultType="hashmap">
+		SELECT	id as userid,
+		name,
+		IFNULL(imgurl,'/upload/jj.jpg') as imgpath,
+		labe as label,
+		loginid  from cs_user where loginid=#{loginid} and	password=#{password} and cid=#{cid} 
+		
+	</select>
+	<select id="checkinsert" parameterType="Person" resultType="int">
+		SELECT	count(*) from cs_user where loginid=#{loginid} and cid=#{cid}
+	</select>
+
+	<insert id="save_person" parameterType="Person">
+		INSERT INTO cs_user (id, cid, name, loginid, password, status, sex, job,title, labe, personid, areaid, area2id,teamid)
+		VALUES (#{userid}, #{cid}, #{name}, #{loginid}, #{password}, #{status}, #{sex},#{job}, #{title}, #{label}, #{personid}, #{areaid}, #{area2id},#{teamid})
+	</insert>
+
+	<select id="get_area" resultMap="areaResult">
+		SELECT a.id AS aid ,a.name AS aname,b.id AS bid,b.name AS bname FROM d_area a ,d_area b WHERE a.id=b.reid ORDER BY a.id
+	</select>
+
+	<resultMap id="areaResult" type="Area">
+		<id property="id" column="aid" />
+		<result property="name" column="aname" />
+		<collection property="areaitems2"  javaType="ArrayList" ofType="Area2">
+			<id property="id" column="bid" />			 
+			<result property="name" column="bname" />
+		</collection>
+	</resultMap>
+	
+	
+	<select id="get_team"  parameterType="string"   resultType="eme.modual.team.Team">
+		SELECT id,name FROM tm_team  WHERE  cid=#{cid}
+	</select>
+	
+	<select id="get_person" parameterType="string" resultType="hashmap">
+
+	SELECT a.id as userid, a.name, loginid, sex, job,title, a.labe label, personid, a.password,
+	areaid, area2id,teamid ,b.name AS areaname ,b2.name AS area2name ,c.name AS teamname
+	FROM cs_user a
+	LEFT JOIN d_area b ON a.areaid=b.id
+	LEFT JOIN d_area b2 ON a.area2id=b2.id
+	LEFT JOIN tm_team c ON a.teamid=c.id
+	WHERE a.id=#{id}
+
+   </select>
+	
+	 <update id="update_person" parameterType="Person">
+		update cs_user set name=#{name}, loginid=#{loginid}, password=#{password},  sex=#{sex}, job=#{job},
+		title=#{title}, labe=#{label}, personid=#{personid}, areaid=#{areaid}, area2id=#{area2id},teamid =#{teamid} 
+		where id=#{userid}
+	</update>
+	
+	
+	
+		<select id="get_imgGroup" parameterType="hashmap" resultType="ImgGroup"> 
+		 
+		 SELECT a.id AS groupid , a.labe AS label ,b.path AS imgpath , date_format(a.createtime,'%Y年%m月%d日') as createtime,
+		 IFNULL(c.goodcount,0) AS goodcount ,		 
+		  <if test="userid != toid">
+          IFNULL(d.flag,'1')
+         </if>
+		 <if test="userid == toid">
+          '0' 
+         </if>		 		 
+		  AS flag   ,
+		 IFNULL(c.commentcount,0) AS commentcount 		 
+		 FROM pr_imggroup a
+		 LEFT JOIN  (SELECT ii.imggroupid ,max(ii.path) path FROM pr_img ii GROUP BY ii.imggroupid ) b ON a.id=b.imggroupid
+		 LEFT JOIN (SELECT cc.imggroupid, sum(case  when cc.type='0'then 1 else 0 end )  goodcount,  sum(case  when cc.type='1'then 1 else 0 end ) commentcount  
+		                     FROM pr_comment cc GROUP BY cc.imggroupid) c ON a.id=c.imggroupid
+		 LEFT JOIN (SELECT pp.id groupid ,'0' AS flag  FROM cs_user vv ,pr_comment pp WHERE vv.id=pp.uid  AND pp.type='0' AND vv.id= #{userid} ) d   ON a.id=d.groupid                 
+		  
+		 WHERE a.uid=#{toid} and a.flag='0'
+		 
+		 
+		 <if test="type == 1">
+          AND (a.type='1' or a.type='2')
+         </if>
+		 <if test="type == 2">
+          AND   a.type='2' 
+         </if>
+          ORDER BY a.createtime  DESC  LIMIT ${pagenum},${pagecount}
+
+   </select>
+
+
+		<select id="get_imgGroupCount" parameterType="hashmap" resultType="int">
+		 SELECT count(*) FROM pr_imggroup a  WHERE a.uid=#{userid} 
+		 <if test="type == 1">
+          AND (a.type='1' or a.type='2')
+         </if>
+		 <if test="type == 2">
+          AND   a.type='2' 
+         </if> 
+         </select>
+   
+   	<select id="get_imgGroupInfo" parameterType="String"  resultMap="imgGroupResult">
+		 
+        SELECT a.id AS groupid, a.labe, date_format(a.createtime,'%Y年%m月%d日') as createtime,a.labe ,b.id as imgid ,b.path 
+           FROM pr_imggroup a ,pr_img b WHERE a.id =b.imggroupid AND a.id=#{id}
+	</select>
+
+	<resultMap id="imgGroupResult" type="hashmap">
+	    <id property="groupid" column="groupid" />
+		<result property="createtime" column="createtime" />
+		<result property="label" column="labe" />
+		<result property="name" column="aname" />
+		<collection property="imgitems"  javaType="ArrayList" ofType="Img">
+			<id property="imgid" column="imgid" />			 
+			<result property="imgpath" column="path" />
+		</collection>
+	</resultMap>
+	
+	<select id="get_imgCount" parameterType="String"  resultType="int">		 
+        SELECT count(*)
+           FROM pr_img b WHERE  imggroupid=#{id}
+	</select>
+
+    <select id="get_imgGroupGoodCommentCount" parameterType="String"  resultType="hashmap">		
+    SELECT count(imggroupid ) count ,
+    sum(case  when type='0'then 1 else 0 end )  goodcount,  
+    sum(case  when type='1'then 1 else 0 end ) commentcount  
+    FROM pr_comment WHERE imggroupid=#{id} GROUP BY imggroupid
+      
+	</select>
+	
+	
+	
+	   	<select id="input_ImgGroupComment" parameterType="hashmap"  resultMap="imgGroupCommentResult">
+			SELECT b.id groupid , c.name toname,ifnull(c.imgurl,'/upload/jj.jpg') toimgpath , 
+		c.id toid,b.labe label ,date_format(b.createtime,'%Y年%m月%d日') createtime ,a.id commentid ,a.comment,d.name commentusername ,
+		ifnull(d.imgurl,'/upload/jj.jpg') commentuserimgpath,
+		a.type commenttype,date_format(a.createtime,'%Y年%m月%d日')  commentcreatetime
+		FROM  pr_imggroup b
+		LEFT JOIN pr_comment a ON a.imggroupid=b.id
+		LEFT JOIN cs_user c  ON b.uid=c.id
+		LEFT JOIN cs_user d  ON d.id=a.uid
+		WHERE b.id=#{groupid}
+		 ORDER BY a.createtime  DESC  LIMIT ${pagenum},${pagecount}
+       
+	</select>
+
+	<resultMap id="imgGroupCommentResult" type="hashmap">
+	    <id property="groupid" column="groupid" />
+		<result property="toid" column="toid" />
+		<result property="toname" column="toname" />
+		<result property="label" column="label" />
+		<result property="createtime" column="createtime" />
+		 <result property="toimgpath" column="toimgpath" />
+		<collection property="items"  javaType="ArrayList" ofType="ImgGroupComment">
+			<id property="commentid" column="commentid" />			 
+			<result property="commentusername" column="commentusername" />
+			<result property="commentuserimgpath" column="commentuserimgpath" />
+			<result property="commentcreatetime" column="commentcreatetime" />
+			<result property="commenttype" column="commenttype" />			
+			<result property="comment" column="comment" />			
+		</collection>
+	</resultMap>
+	
+	 <select id="get_imgGroupCommentCount" parameterType="String"  resultType="int">		
+    SELECT count(*)   
+    FROM pr_comment WHERE imggroupid=#{id}  
+      
+	</select>
+	
+	 <select id="get_img" parameterType="String"  resultType="Img">		
+    SELECT id AS imgid ,path AS imgpath FROM pr_img WHERE  imggroupid=#{id}  
+      
+	</select>
+	
+	
+		<insert id="send_good" parameterType="hashmap">
+		INSERT INTO pr_comment (id, imggroupid, uid, createtime, type)
+       VALUES (#{id}, #{groupid}, #{userid},  now(), '0')
+       
+       </insert>
+       
+       <insert id="send_comment" parameterType="hashmap">
+		INSERT INTO pr_comment (id, imggroupid, uid, createtime, type,comment)
+       VALUES (#{id}, #{groupid}, #{userid},  now(), '1',#{comment})
+       
+       </insert>
+       
+        <update id="del_imgGroup" parameterType="hashmap">
+		update pr_imggroup set flag='9' where id= #{groupid} 
+       
+       </update>
+       
+       
+       
+        <update id="set_img" parameterType="hashmap">
+		 
+		UPDATE cs_user SET imgurl=(SELECT path FROM pr_img WHERE id =#{imgid} ) WHERE id=#{userid}
+       
+       </update>
+       
+       
+       
+       <select id="get_headimg" parameterType="string" resultType="string">
+         select path from pr_img where id=#{id}
+       </select>
+       
+       <insert id="insert_imgGroup" parameterType="hashmap">
+		
+		INSERT INTO pr_imggroup (id, type, labe, createtime, uid, flag)
+		VALUES (#{id}, #{type}, #{label}, now(), #{userid}, '0')
+		       
+       </insert>
+       
+          <insert id="insert_img" parameterType="hashmap">
+		    INSERT INTO pr_img (id, imggroupid, path)
+            VALUES (#{id}, #{groupid}, #{path})
+		       
+       </insert>
+   
+       
+       
+	
+</mapper>

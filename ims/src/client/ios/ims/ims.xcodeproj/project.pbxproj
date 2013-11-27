@@ -30,6 +30,7 @@
 		621DD7E3180E883300F8D08F /* MessageCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = 621DD7E2180E883300F8D08F /* MessageCodec.m */; };
 		621DD7E6180E91BB00F8D08F /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 621DD7E5180E91BB00F8D08F /* NSString+Base64.m */; };
 		622A14171810CDB0005CD547 /* MyConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 622A14161810CDB0005CD547 /* MyConstants.m */; };
+		623D4D731845E0C600AC18E1 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 623D4D721845E0C600AC18E1 /* libopencore-amrnb.a */; };
 		6253AD0E180F7BB40099D5B3 /* NSDataUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6253AD0D180F7BB40099D5B3 /* NSDataUtils.m */; };
 		6253AD11180F88E20099D5B3 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6253AD10180F88E20099D5B3 /* Constants.m */; };
 		625B246B1839B57A00923839 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 625B24681839B57A00923839 /* libcrypto.a */; };
@@ -48,7 +49,6 @@
 		626F831B1816479600C9E446 /* VoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 626F83171816479600C9E446 /* VoiceConverter.mm */; };
 		626F831C1816479600C9E446 /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 626F83191816479600C9E446 /* wav.mm */; };
 		626F8321181656F100C9E446 /* AudioManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 626F8320181656F100C9E446 /* AudioManagerDelegate.m */; };
-		62A9BE11182257040077137D /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A9BE10182257040077137D /* libopencore-amrnb.a */; };
 		62D83F7D1820AF14007A3E7D /* AudioFileConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D83F7C1820AF14007A3E7D /* AudioFileConvertor.m */; };
 		62EAA6D11839F9CF00B51ED1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62EAA6D01839F9CF00B51ED1 /* AudioToolbox.framework */; };
 		62EAA6D31839F9DD00B51ED1 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62EAA6D21839F9DD00B51ED1 /* CoreAudio.framework */; };
@@ -105,6 +105,7 @@
 		621DD7E5180E91BB00F8D08F /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
 		622A14151810CDB0005CD547 /* MyConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyConstants.h; sourceTree = "<group>"; };
 		622A14161810CDB0005CD547 /* MyConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyConstants.m; sourceTree = "<group>"; };
+		623D4D721845E0C600AC18E1 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libopencore-amrnb.a"; path = "ims/references/library/libopencore-amrnb.a"; sourceTree = "<group>"; };
 		6253AD0C180F7BB40099D5B3 /* NSDataUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataUtils.h; sourceTree = "<group>"; };
 		6253AD0D180F7BB40099D5B3 /* NSDataUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataUtils.m; sourceTree = "<group>"; };
 		6253AD0F180F88E20099D5B3 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -239,13 +240,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				623D4D731845E0C600AC18E1 /* libopencore-amrnb.a in Frameworks */,
 				62EAA6D71839F9F500B51ED1 /* QuartzCore.framework in Frameworks */,
 				62EAA6D51839F9EA00B51ED1 /* OpenGLES.framework in Frameworks */,
 				62EAA6D31839F9DD00B51ED1 /* CoreAudio.framework in Frameworks */,
 				62EAA6D11839F9CF00B51ED1 /* AudioToolbox.framework in Frameworks */,
 				625B246F1839B94500923839 /* libz.dylib in Frameworks */,
 				625B246D1839B57B00923839 /* libssl.a in Frameworks */,
-				62A9BE11182257040077137D /* libopencore-amrnb.a in Frameworks */,
 				626F82F21816130300C9E446 /* AVFoundation.framework in Frameworks */,
 				625B246B1839B57A00923839 /* libcrypto.a in Frameworks */,
 				620F27FE180E34C90092DEAF /* CoreGraphics.framework in Frameworks */,
@@ -290,6 +291,7 @@
 		620F27FA180E34C90092DEAF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				623D4D721845E0C600AC18E1 /* libopencore-amrnb.a */,
 				62EAA6D61839F9F500B51ED1 /* QuartzCore.framework */,
 				62EAA6D41839F9EA00B51ED1 /* OpenGLES.framework */,
 				62EAA6D21839F9DD00B51ED1 /* CoreAudio.framework */,
@@ -857,6 +859,7 @@
 					"$(SRCROOT)/ims/references/av",
 					"$(SRCROOT)/ims/references/av",
 					"$(SRCROOT)/ims/references/library",
+					/Users/tju/Workspaces/eme/ims/src/client/ios/ims/ims/references/library,
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -879,6 +882,7 @@
 					"$(SRCROOT)/ims/references/av",
 					"$(SRCROOT)/ims/references/av",
 					"$(SRCROOT)/ims/references/library",
+					/Users/tju/Workspaces/eme/ims/src/client/ios/ims/ims/references/library,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<mapping>
+       <class name="eme.xml.EmeRoot">
+                <map-to xml="eme"/>
+              <field name="version" type="java.lang.String">
+                     <bind-xml name="version" node="attribute"/>
+              </field>            
+              <field name="slist" type="eme.xml.Service" collection="arraylist">
+                     <bind-xml name="service"/>
+              </field>
+       </class>
+       <class name="eme.xml.Service">
+              <field name="name" type="java.lang.String">
+                     <bind-xml name="name" node="attribute"/>
+              </field>
+              <field name="value" type="java.lang.String">
+                     <bind-xml name="value" node="attribute"/>
+              </field>
+              <field name="flist" type="eme.xml.Function" collection="arraylist">
+                     <bind-xml name="function"/>
+              </field>
+       </class>
+       <class name="eme.xml.Function">
+              <field name="name" type="java.lang.String"  >
+                     <bind-xml name="name" node="attribute"/>
+              </field>
+              <field name="value" type="java.lang.String"  >
+                     <bind-xml name="value" node="attribute"/>
+              </field>
+               <field name="readonly" type="java.lang.Boolean"  >
+                     <bind-xml name="readonly" node="attribute"/>
+              </field>
+               
+       </class>
+</mapping>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>emejis</display-name>
+  <servlet>
+    <servlet-name>emeJisServlet</servlet-name>
+    <servlet-class>eme.EmeJisServlet</servlet-class>
+    <init-param>
+      <param-name>definepath</param-name>
+      <param-value>define.xml</param-value>       
+    </init-param>
+     <init-param>  
+        <param-name>mappath</param-name>  
+        <param-value>map.xml</param-value>  
+    </init-param>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>emeJisUploadServlet</servlet-name>
+    <servlet-class>eme.EmeJisUploadServlet</servlet-class>     
+  </servlet>
+  
+    <servlet>
+    <servlet-name>emeJisUploadServlet2</servlet-name>
+    <servlet-class>eme.EmeJisUpload2Servlet</servlet-class>     
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>emeJisServlet</servlet-name>
+    <url-pattern>/eme/*</url-pattern>
+  </servlet-mapping>
+  
+    <servlet-mapping>
+    <servlet-name>emeJisUploadServlet</servlet-name>
+    <url-pattern>/emeupload</url-pattern>
+  </servlet-mapping>
+  
+    <servlet-mapping>
+    <servlet-name>emeJisUploadServlet2</servlet-name>
+    <url-pattern>/emeupload2</url-pattern>
+  </servlet-mapping>
+</web-app>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eme version="1.0">
+	<service name="S_TRADE" value="eme.modual.trade.TradeUtil">
+		<function name="APPEME_CATEGORY" value="getGategory" />
+		<function name="APPEME_ITEMS_NAME" value="getItemsByName" />
+		<function name="APPEME_ITEMS_TYPE" value="getItemsByType" />
+		<function name="APPEME_ITEMS_CODE" value="getItemsByCode" />
+		<function name="APPEME_ITEM_ASSESS_SEND" value="insertComment"
+			readonly="false" />
+		<function name="APPEME_ITEM_ASSESS" value="getComment" />
+		<function name="APPEME_ITEM_MODEL" value="getModel" />
+		<function name="APPEME_ITEM_IMG" value="getProductImg" />
+		<function name="APPEME_ITEM_TMP_SEND" value="insertBasketItem"
+			readonly="false" />
+		<function name="APPEME_ITEM_TMP" value="getBasketItem" />
+		<function name="APPEME_ITEM_TMP_DEL" value="delBasketItem"
+			readonly="false" />
+		<function name="APPEME_ORDER_ADDR_SEND" value="insertAddress"
+			readonly="false" />
+		<function name="APPEME_ORDER_ADDR" value="getAddress" />
+		<function name="APPEME_ORDER_ADDR_DEL" value="delAddress"
+			readonly="false" />		
+		<function name="APPEME_ORDER_SEND" value="insertorder"
+			readonly="false" />
+		<function name="APPEME_ORDER_GET" value="getOrder" />
+		<function name="APPEME_ORDER_CONFIRM" value="orderConfirm" 	readonly="false" />
+		<function name="APPEME_ORDER_SALER_CANCEL" value="orderSalerCancel" readonly="false" />
+		<function name="APPEME_ORDER_BUYER_CANCEL" value="orderBuyCancel" readonly="false" />
+	</service>
+
+ 
+	<service name="S_PERSON" value="eme.modual.person.PersonUtil">
+		<function name="LOGIN" value="login" readonly="true" />
+		<function name="SAVE_PERSON" value="savePerson" readonly="false" />
+		<function name="GET_AREA" value="getArea"  />
+		<function name="GET_TEAM" value="getTeam"  />
+		<function name="GET_PERSON" value="getPerson"  />
+		<function name="GET_IMGGROUPLIST" value="getImgGroupList"  />
+		<function name="INPUT_IMGGROUP_COMMENT" value="inputImgGroupComment"  /> 
+		<function name="INPUT_IMGGROUP" value="inputImgGroup"  /> 
+		<function name="SEND_GOOD" value="sendGood" readonly="false"  /> 		
+		<function name="SEND_COMMENT" value="sendComment"  readonly="false" /> 
+		<function name="DEL_IMGGROUP" value="delImgGroup"  readonly="false" /> 
+		<function name="SET_IMG" value="setImg" readonly="false"  /> 
+		<function name="UPLOAD_IMGGROUP" value="uploadImgGroup" readonly="false" /> 
+		
+	</service>
+ 
+	
+	<service name="S_LP" value="eme.modual.lp.LpUtil">
+	 
+		<function name="GET_GOODFRIEND" value="getFriend"  />
+		  <function name="GET_GOODFRIENDLIST" value="getFriendList"  />
+		   <function name="ADD_GOODFRIEND" value="addFriend"  />
+		 <function name="ADD_BLACKNAME" value="addBlack"  />
+		  <function name="DEL_GOODFRIEND" value="delFriend"  />
+		
+	</service>
+	
+	
+	
+	
+	 
+</eme>

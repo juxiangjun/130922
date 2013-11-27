@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--  
+<properties resource="org/mybatis/example/config.properties">
+  <property name="username" value="dev_user"/>
+  <property name="password" value="F2Fa3!33TYyg"/>
+</properties>
+-->
+
+
+<settings>
+  <setting name="cacheEnabled" value="true"/>
+  <setting name="lazyLoadingEnabled" value="true"/>
+  <setting name="multipleResultSetsEnabled" value="true"/>
+  <setting name="useColumnLabel" value="true"/>
+  <setting name="useGeneratedKeys" value="false"/>
+  <setting name="autoMappingBehavior" value="PARTIAL"/>
+  <setting name="defaultExecutorType" value="SIMPLE"/>
+  <setting name="defaultStatementTimeout" value="25"/>
+  <setting name="safeRowBoundsEnabled" value="false"/>
+  <setting name="mapUnderscoreToCamelCase" value="false"/>
+  <setting name="localCacheScope" value="SESSION"/>
+  <setting name="jdbcTypeForNull" value="OTHER"/>
+  <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
+</settings>
+  
+<typeAliases>
+  <typeAlias alias="Person" type="eme.modual.person.Person"/> 
+  <typeAlias alias="Area" type="eme.modual.person.Area"/> 
+  <typeAlias alias="Area2" type="eme.modual.person.Area2"/> 
+  <typeAlias alias="ImgGroup" type="eme.modual.person.ImgGroup"/> 
+  <typeAlias alias="Img" type="eme.modual.person.Img"/> 
+  <typeAlias alias="ImgGroupComment" type="eme.modual.person.ImgGroupComment"/>   
+</typeAliases>
+ 
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${jdbcUrl}"/>
+        <property name="username" value="${user}"/>
+        <property name="password" value="${passwd}"/>        
+       <property name="poolMaximumActiveConnections" value="${initialSize}"/>
+        
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="eme/modual/person/mapper.xml"/>   
+    <mapper resource="eme/modual/lp/mapper.xml"/>    
+  </mappers>
+</configuration>
+
